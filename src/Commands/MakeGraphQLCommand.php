@@ -22,10 +22,9 @@ abstract class MakeGraphQLCommand extends Command
 
     abstract public function getStubPath(): string;
 
-    protected function getGraphQLPath($name)
+     protected function getGraphQLPath($name)
     {
-       
-        $directory = app_path('routes');
+        $directory = base_path('routes/graphql');
         
         if (!$this->files->isDirectory($directory)) {
             $this->files->makeDirectory($directory, 0755, true);
