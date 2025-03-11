@@ -1,11 +1,12 @@
 <?php
 
-namespace YourUsername\LaravelGraphQLGenerator;
+namespace KomfySach\LaravelGraphQLGen;
 
 use Illuminate\Support\ServiceProvider;
-use YourUsername\LaravelGraphQLGenerator\Commands\MakeGraphQLType;
-use YourUsername\LaravelGraphQLGenerator\Commands\MakeGraphQLQuery;
-use YourUsername\LaravelGraphQLGenerator\Commands\MakeGraphQLMutation;
+
+use KomfySach\LaravelGraphQLGenerator\Commands\MakeGraphQLMutation as CommandsMakeGraphQLMutation;
+use KomfySach\LaravelGraphQLGenerator\Commands\MakeGraphQLQuery as CommandsMakeGraphQLQuery;
+use KomfySach\LaravelGraphQLGenerator\Commands\MakeGraphQLType as CommandsMakeGraphQLType;
 
 class GraphQLGeneratorServiceProvider extends ServiceProvider
 {
@@ -22,9 +23,9 @@ class GraphQLGeneratorServiceProvider extends ServiceProvider
         // Register commands
         if ($this->app->runningInConsole()) {
             $this->commands([
-                MakeGraphQLType::class,
-                MakeGraphQLQuery::class,
-                MakeGraphQLMutation::class,
+                CommandsMakeGraphQLType::class,
+                CommandsMakeGraphQLQuery::class,
+                CommandsMakeGraphQLMutation::class,
             ]);
         }
     }
