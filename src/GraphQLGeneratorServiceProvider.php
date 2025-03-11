@@ -1,6 +1,6 @@
 <?php
 
-namespace KomfySach\LaravelGraphQLGen;
+namespace KomfySach\LaravelGraphQLGenerator;
 
 use Illuminate\Support\ServiceProvider;
 
