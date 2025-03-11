@@ -24,15 +24,8 @@ abstract class MakeGraphQLCommand extends Command
 
     protected function getGraphQLPath($name)
     {
-        if (strpos($name, 'Type') !== false) {
-            $directory = app_path('GraphQL/Types');
-        } else if (strpos($name, 'Query') !== false) {
-            $directory = app_path('GraphQL/Queries');
-        } else if (strpos($name, 'Mutation') !== false) {
-            $directory = app_path('GraphQL/Mutations');
-        } else {
-            $directory = app_path('GraphQL');
-        }
+       
+        $directory = app_path('routes');
         
         if (!$this->files->isDirectory($directory)) {
             $this->files->makeDirectory($directory, 0755, true);
