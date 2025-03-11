@@ -1,0 +1,37 @@
+<?php
+
+use App\Models\{{ model }};
+use Rebing\GraphQL\Support\Facades\GraphQL;
+use GraphQL\Type\Definition\Type;
+use Rebing\GraphQL\Support\Mutation;
+
+class {{ class }} extends Mutation
+{
+    protected $attributes = [
+        'name' => 'create{{ model }}'
+    ];
+
+    public function type(): Type
+    {
+        return GraphQL::type('{{ modelVariable }}');
+    }
+
+    public function args(): array
+    {
+        return [
+            'name' => [
+                'name' => 'name',
+                'type' => Type::nonNull(Type::string())
+            ]
+        ];
+    }
+
+    public function resolve($root, $args)
+    {
+        ${{ modelVariable }} = new {{ model }}();
+        ${{ modelVariable }}->name = $args['name'];
+        ${{ modelVariable }}->save();
+
+        return ${{ modelVariable }};
+    }
+}

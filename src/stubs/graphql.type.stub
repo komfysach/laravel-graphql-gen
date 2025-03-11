@@ -1,0 +1,38 @@
+<?php
+
+use GraphQL\Type\Definition\Type;
+use Rebing\GraphQL\Support\Facades\GraphQL;
+use Rebing\GraphQL\Support\Type as GraphQLType;
+
+class {{ class }} extends GraphQLType
+{
+    protected $attributes = [
+        'name' => '{{ model }}',
+        'description' => 'A {{ model }}',
+        'model' => \App\Models\{{ model }}::class
+    ];
+
+    public function fields(): array
+    {
+        return [
+            'id' => [
+                'type' => Type::nonNull(Type::int()),
+                'description' => 'The id of the {{ modelVariable }}'
+            ],
+            'created_at' => [
+                'type' => Type::string(),
+                'description' => 'The date the {{ modelVariable }} was created',
+                'resolve' => function($model) {
+                    return $model->created_at;
+                }
+            ],
+            'updated_at' => [
+                'type' => Type::string(),
+                'description' => 'The date the {{ modelVariable }} was last updated',
+                'resolve' => function($model) {
+                    return $model->updated_at;
+                }
+            ]
+        ];
+    }
+}
